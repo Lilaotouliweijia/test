@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entity">
+    <class name="Zhishiku" table="zhishiku" >
+        <id name="zhiShiId" type="integer">
+            <column name="zhiShiId" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="shiShiTitle" type="string" length="20">
+        	<column name="shiShiTitle"></column>
+        </property>
+         <property name="zhishiContent" type="string" length="255">
+        	<column name="zhishiContent"></column>
+        </property>
+         <property name="publishTime" type="java.sql.Timestamp">
+        	<column name="publishTime"></column>
+        </property>
+        <property name="author" type="string" length="20">
+        	<column name="author"></column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entity">
+    <class name="Project" table="project" >
+        <id name="projectId" type="integer">
+            <column name="projectId" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="projectName" type="string" length="20">
+        	<column name="projectName"></column>
+        </property>
+         <property name="projectContent" type="string" length="255">
+        	<column name="projectContent"></column>
+        </property>
+         <property name="projectState" type="string" length="20">
+        	<column name="projectState"></column>
+        </property>
+        <property name="startDate" type="java.sql.Date">
+        	<column name="startDate"></column>
+        </property>
+        <property name="endDate" type="java.sql.Date">
+        	<column name="endDate"></column>
+        </property>
+         <property name="shenQingUrl" type="string" length="100">
+        	<column name="shenQingUrl"></column>
+        </property>
+        <property name="ifopr" type="string" length="100">
+        	<column name="ifopr"></column>
+        </property>
+        
+        <property name="baseEn" type="string" length="255">
+        	<column name="baseEn"></column>
+        </property>
+        <property name="baseInfo" type="string" length="255">
+        	<column name="baseInfo"></column>
+        </property>
+        <property name="baseFz" type="string" length="255">
+        	<column name="baseFz"></column>
+        </property>
+        <property name="baseWay" type="string" length="255">
+        	<column name="baseWay"></column>
+        </property>
+        <property name="ProEn" type="string" length="255">
+        	<column name="ProEn"></column>
+        </property>
+        <property name="ProInfo" type="string" length="255">
+        	<column name="ProInfo"></column>
+        </property>
+        <property name="ProFz" type="string" length="255">
+        	<column name="ProFz"></column>
+        </property>
+        <property name="ProWay" type="string" length="255">
+        	<column name="ProWay"></column>
+        </property>
+        <property name="baseUrl" type="string" length="255">
+        	<column name="baseUrl"></column>
+        </property>
+        <property name="ProUrl" type="string" length="255">
+        	<column name="ProUrl"></column>
+        </property>
+        <many-to-one name="projectAdmin" column="projectAdmin" class="Admin"
+			lazy="false" cascade="save-update"></many-to-one>
+	<one-to-one name="projectInfo" class="Info"
+            cascade="all" property-ref="project" lazy="false"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- struts配置文件的根 -->
+<struts>
+	<package name="meetingl" namespace="/" extends="main">
+		<action name="MeetingAll" class="meetingAction" method="MeetingAll">
+			<result name="success">/meeting.jsp</result>
+		</action>
+		<action name="addMeeting" class="meetingAction" method="addMeeting">
+			<result name="success" type="redirectAction">MeetingAll</result>
+		</action>
+		<action name="modifyMeeting" class="meetingAction" method="modifyMeeting">
+			<result name="success" type="redirectAction">MeetingAll</result>
+		</action>
+		<action name="delMeeting" class="meetingAction" method="delMeeting">
+			<result name="success" type="redirectAction">MeetingAll</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entity">
+	<class name="Report" table="report">
+		<id name="reportId" type="integer">
+			<column name="reportId" />
+			<generator class="identity"></generator>
+		</id>
+		<property name="suggest" type="string" length="20">
+			<column name="suggest"></column>
+		</property>
+		<property name="content" type="string" length="255">
+			<column name="content"></column>
+		</property>
+		<property name="guiDang" type="string" length="20">
+			<column name="guiDang"></column>
+		</property>
+
+		<property name="sugUrl" type="string" length="100">
+			<column name="sugUrl"></column>
+		</property>
+		<property name="tzUrl" type="string" length="100">
+			<column name="tzUrl"></column>
+		</property>
+	</class>
+</hibernate-mapping>

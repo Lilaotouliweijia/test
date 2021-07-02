@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entity">
+    <class name="Info" table="info" >
+        <id name="infoId" type="integer">
+            <column name="infoId" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="infoTitle" type="string" length="20">
+        	<column name="infoTitle"></column>
+        </property>
+         <property name="infoTime" type="java.sql.Timestamp">
+        	<column name="infoTime"></column>
+        </property>
+        <property name="forBook" type="string" length="20">
+        	<column name="forBook"></column>
+        </property>
+         <property name="forBookUrl" type="string" length="200">
+        	<column name="forBookUrl"></column>
+        </property>
+        <property name="state" type="string" length="10">
+        	<column name="state"></column>
+        </property>
+	<many-to-one name="project" unique="true" cascade="all" lazy="false">
+            <column name="projectId"></column>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

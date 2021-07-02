@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd" 
+	xmlns:tx="http://www.springframework.org/schema/tx">
+
+<!-- 加载数据库配置 -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/shenji">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<!-- 映射到数据源 -->
+		<property name="mappingResources">
+			<list>
+				<value>entity/Admin.hbm.xml</value>
+				<value>entity/Zhishiku.hbm.xml</value>
+				<value>entity/Info.hbm.xml</value>
+				<value>entity/Project.hbm.xml</value>
+				<value>entity/FangAn.hbm.xml</value>
+				<value>entity/Xcsj.hbm.xml</value>
+				<value>entity/Report.hbm.xml</value>
+				<value>entity/Meeting.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!--  定义事务通知    --> 
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">	 
+	  <tx:attributes>	 
+	  	<tx:method name="*" propagation="REQUIRED" /> 
+	  </tx:attributes>
+	</tx:advice>
+	
+    <!--定义切面，并将事务通知和切面组合（定义哪些方法应用事务规则） -->
+    <aop:config>
+        <!-- 对com.restrant.biz包下的所有类的所有方法都应用事务规则 -->
+    	<aop:pointcut id="bizMethods" expression="execution(* biz.*.*(..))" /> 
+    	<aop:pointcut id="bizMethods" expression="execution(* bizImpl.*.*(..))" /> 
+    	<!--  将事务通知和切面组合   --> 
+    	<aop:advisor advice-ref="txAdvice" pointcut-ref="bizMethods" /> 
+    </aop:config>
+    
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+    
+    <!-- 定义AdminDaoImpl类-->
+	<bean id="adminDao" class="daoImpl.AdminDaoImpl">	  
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <!-- 定义AdminBizImpl类,并为其adminDAO属性注入值-->
+	<bean id="adminBiz" class="bizImpl.AdminBizImpl">	  
+    	<property name="adminDao" ref="adminDao" />
+    </bean>
+    <!-- 定义AdminAction，并为其中属性adminBiz注入值 -->
+	<bean name="adminAction" class="action.AdminAction" scope="prototype">
+    	<property name="adminBiz" ref="adminBiz" />
+    </bean>
+    
+    <!-- 配置知识库-->
+	<bean id="zskDao" class="daoImpl.zskDaoImpl">	  
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+	<bean id="zskBiz" class="bizImpl.ZskBizImpl">	  
+    	<property name="zskDao" ref="zskDao" />
+    </bean>
+	<bean name="zskAction" class="action.ZskAction" scope="prototype">
+    	<property name="zbi" ref="zskBiz" />
+    </bean>
+    
+    <!-- 配置通知书-->
+	<bean id="infoDao" class="daoImpl.InfoDaoImpl">	  
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+	<bean id="infoBiz" class="bizImpl.InfoImpl">	  
+    	<property name="zskDao" ref="infoDao" />
+    </bean>
+	<bean name="infoAction" class="action.InfoAction" scope="prototype">
+    	<property name="zbi" ref="infoBiz" />
+    </bean>
+    
+     <!-- 配置方案-->
+	<bean id="faDao" class="daoImpl.FangAnDaoImpl">	  
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+	<bean id="faBiz" class="bizImpl.FangAnBizImpl">	  
+    	<property name="faDao" ref="faDao" />
+    </bean>
+	<bean name="fangAnAction" class="action.FangAnAction" scope="prototype">
+    	<property name="zbi" ref="faBiz" />
+    	<property name="abiz" ref="adminBiz" />
+    </bean>
+    
+     <!-- 配置项目-->
+	<bean id="proDao" class="daoImpl.ProjectDaoImpl">	  
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+	<bean id="proBiz" class="bizImpl.ProjectBizImpl">	  
+    	<property name="faDao" ref="proDao" />
+    </bean>
+	<bean name="projectAction" class="action.ProjectAction" scope="prototype">
+    	<property name="zbi" ref="proBiz" />
+    	<property name="abiz" ref="adminBiz" />
+    </bean>
+     <!-- 配置现场审计-->
+	<bean id="xcDao" class="daoImpl.XcsjDaoImpl">	  
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+	<bean id="xcBiz" class="bizImpl.XcsjBizImpl">	  
+    	<property name="zskDao" ref="xcDao" />
+    </bean>
+	<bean name="xcsjAction" class="action.XcsjAction" scope="prototype">
+    	<property name="zbi" ref="xcBiz" />
+    </bean>
+    
+     <!-- 配置报告信息-->
+	<bean id="bgDao" class="daoImpl.ReportDaoImpl">	  
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+	<bean id="bgBiz" class="bizImpl.ReportBizImpl">	  
+    	<property name="zskDao" ref="bgDao" />
+    </bean>
+	<bean name="bgAction" class="action.ReportAction" scope="prototype">
+    	<property name="zbi" ref="bgBiz" />
+    </bean>
+    
+     <!-- 配置会议信息-->
+	<bean id="meetingDao" class="daoImpl.MeetingDaoImpl">	  
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+	<bean id="meetingBiz" class="bizImpl.MeetingBizImpl">	  
+    	<property name="meetingDao" ref="meetingDao" />
+    </bean>
+	<bean name="meetingAction" class="action.MeetingAction" scope="prototype">
+    	<property name="zbi" ref="meetingBiz" />
+    	<property name="adminBiz" ref="adminBiz" />
+    </bean>
+</beans>

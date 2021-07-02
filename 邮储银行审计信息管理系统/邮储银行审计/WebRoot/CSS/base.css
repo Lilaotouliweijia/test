@@ -1,0 +1,307 @@
+@CHARSET "UTF-8";
+*{
+	margin:0px;
+	padding:0px;
+}
+body{
+	width:100%;
+	min-width: 1000px;
+}
+#login{
+	width:500px;
+	height: 400px;
+	background:#f2f2f2;
+	margin: 100px auto;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	color: #333;
+}
+
+.aaa{
+	width:50px;
+	display: block;
+	float: left;
+}
+#nav{
+	height: 50px;
+	background: #bbb;
+	padding-left: 200px;
+}
+#nav li{
+	list-style: none;
+	float: left;
+	height: 50px;
+	line-height: 50px;
+}
+#nav li a{
+	text-decoration: none;
+}
+.header{
+	width: 100%;
+	height: 30px;
+	background: #333;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+}
+.logo{
+	float:right;
+	margin-top:10px;
+	width: 100px;
+	height: 150px;
+	background: url("../img/logo.png") no-repeat;
+	font-size: 18px;
+	font-family: '微软雅黑';
+	padding-top:36px;
+	font-weight: bolder;
+}
+.login{
+	width: 100%;
+	margin-top: -100px;
+	float: left;
+	height: 100px;
+}
+.title{
+	width:500px;
+	height: 50px;
+	font-size: 30px;
+	font-family: 微软雅黑;
+	font-weight: bold;
+	line-height: 50px;
+	text-align: center;
+}
+.admin{
+	width:200px;
+	height: 29px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.anPic{
+	width:29px;
+	background-color: #ccc;
+	height: 29px;
+	background-image: url("../img/n.png");
+	float: left;
+}
+.apPic{
+	width:29px;
+	background-color: #ccc;
+	height: 29px;
+	background-image: url("../img/p.png");
+	float: left;
+}
+.anJB,.apIco{
+	width:80px;
+	background-color: #ccc;
+	height: 29px;
+	margin-left: -50px;
+	color: #fff;
+	line-height: 29px;
+	text-align: center;
+}
+.admin input{
+	width: 170px;
+	float: left;
+	height: 29px;
+	line-height: 29px;
+}
+#login button{
+	margin-top:10px;
+	width: 100px;
+	margin-left:200px;
+	height: 30px;
+	border-radius:5px;
+	background: #92d050;
+	border:none;
+}
+a{
+	margin-left: 20px;
+}
+.regN{
+	width: 170px;
+	float: left;
+	height: 29px;
+	line-height: 29px;
+	margin-top: -208px;
+	margin-left: 170px;
+}
+.regP{
+	width: 170px;
+	float: left;
+	height: 29px;
+	line-height: 29px;
+	margin-top: -162px;
+	margin-left: 170px;
+}
+.regT{
+	width: 170px;
+	float: left;
+	height: 29px;
+	line-height: 29px;
+	margin-top: -118px;
+	margin-left: 170px;
+}
+.regI{
+	width: 170px;
+	float: left;
+	height: 29px;
+	line-height: 29px;
+	margin-top: -70px;
+	margin-left: 170px;
+}
+.regBtn{
+	margin-top:-35px;
+	width: 100px;
+	margin-left:120px;
+	height: 30px;
+	border-radius:5px;
+	background: #92d050;
+	border:none;
+}
+
+.wo{
+	color: red;
+	margin-left: 360px;
+	float: left;
+	margin-top: -26px;
+	font-size: 10px;
+}
+table,td,th{
+	border: 1px solid #65a130;
+}
+table{
+	margin-top:10px;
+	width: 1000px;
+}
+th{
+	background: pink;
+}
+td{
+	color: #65a130;
+	text-align: center;
+}
+#mingXi{
+	color: #65a130;
+}
+.goShenHe,.modBtn{
+	height: 30px;
+	color: #fff;
+	font-family: '微软雅黑';
+	font-size: 20px;
+	font-weight: bold;
+	line-height:30px;
+	background: #65a130;
+	width: 200px;
+	border-radius:10px;
+}
+.index2{
+	display:none;
+	position:absolute;
+	background:#c3dbab;
+	top:0px;
+	z-index:2;
+	width: 100%;
+	height: 100%;
+	opacity:0.8;
+	padding-top: 100px;
+}
+.addMes{
+	display:block;
+	margin:0 auto;
+	width:90%;
+	padding:50px;
+	background: #fff;
+	border:1px solid #333;
+}
+.cancel{
+	display:block;
+	margin:5px auto;
+}
+#hh{
+	margin-top:20px;
+	width: 100%;
+	height: 50px;
+	background: url("../img/logo.png") no-repeat 4px  #323;
+	display: block;
+}
+#hh img{
+	margin-left:400px;
+	width: 50px;
+	height: 50px;
+	border-radius:25px;
+	float: left;
+}
+.hhlog{
+	color: #fff;
+	line-height: 50px;
+	height: 50px;
+	display: block;
+	width: 130px;
+	margin-left: 150px;
+	font-size: 30px;
+	font-weight: bold;
+	font-family: '微软雅黑';
+	float: left;
+}
+.hhadminName{
+	color: #fff;
+	font-size: 16px;
+	text-align: left;
+	margin-left:10px;
+	width: 200px;
+	height: 50px;
+	line-height: 50px;
+	display: block;
+	float: left;
+}
+.hhadminName a{
+	color: #fff;
+}
+.time{
+	float:left;
+	width:250px;
+	color: #fff;
+	font-size: 14px;
+	background: blue;
+}
+.hid{
+	display: none;
+}
+#modFa{
+	display: none;
+}
+.addProd table{
+	margin-left: -50px;
+}
+#left{
+	width: 200px;
+	float: left;
+}
+#right{
+	float: left;
+}
+#left a{
+	text-decoration: none;
+	color:#333;
+	height: 36px;
+	display: block;
+	line-height: 36px;
+	background: orange;
+	border-bottom:1px solid green;
+}
+.t1 div,.t2 div,.t3 div{
+	width: 200px;
+	height: 50px;
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 50px;
+	background: green;
+}
+.ls3,.ls2,.ls1{
+	display:block;
+	width: 48px;
+	height: 48px;
+	float: left;
+	border:1px solid #333;
+	background: url("../img/up.png");
+	text-align: center;
+}

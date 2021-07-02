@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- struts配置文件的根 -->
+<struts>
+	<package name="info" namespace="/" extends="main">
+		<action name="InfoAll" class="infoAction" method="InfoAll">
+			<result name="success">/info.jsp</result>
+		</action>
+		<action name="delInfo" class="infoAction" method="delInfo">
+			<result name="success" type="redirectAction">InfoAll</result>
+		</action>
+		<action name="modiInfo" class="infoAction" method="modifyInfo">
+			<result name="success" type="redirectAction">InfoAll</result>
+		</action>
+		<action name="addInfo" class="infoAction" method="addInfo">
+		<!--defaultStack中也包含了fileUpload  所以这里需要注意顺序， 先fileUpload再默认 
+		当拦截器工作后将不符合要求的数据拦截，就会自动默认去执行    input   的result组件
+	-->
+		<interceptor-ref name="fileUpload">
+			<param name="maximumSize">2048000</param>
+			<param name="allowedTypes">doc</param>
+		</interceptor-ref>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+		<!-- 在  fileUpload中也可以设置大小    此处不能超过默认大小  -->
+			<result name="success" type="redirectAction">InfoAll</result>
+		</action>
+	</package>
+</struts>

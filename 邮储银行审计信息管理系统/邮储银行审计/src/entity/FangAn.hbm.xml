@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entity">
+    <class name="FangAn" table="fangan" >
+        <id name="fangAnId" type="integer">
+            <column name="fangAnId" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="danWeiName" type="string" length="20">
+        	<column name="danWeiName"></column>
+        </property>
+         <property name="shenJiYiJu" type="string" length="255">
+        	<column name="shenJiYiJu"></column>
+        </property>
+         <property name="startTime" type="java.sql.Date">
+        	<column name="startTime"></column>
+        </property>
+        <property name="endTime" type="java.sql.Date">
+        	<column name="endTime"></column>
+        </property>
+        <property name="fangAnContent" type="string" length="255">
+        	<column name="fangAnContent"></column>
+        </property>
+         <property name="fangUrl" type="string" length="255">
+        	<column name="fangUrl"></column>
+        </property>
+        <property name="res" type="string" length="20">
+        	<column name="res"></column>
+        </property>
+		<many-to-one name="projectId"  column="projectId" lazy="false" class="Project"></many-to-one>
+		<many-to-one name="admin"  column="adminId" lazy="false" class="Admin"></many-to-one>
+    </class>
+</hibernate-mapping>

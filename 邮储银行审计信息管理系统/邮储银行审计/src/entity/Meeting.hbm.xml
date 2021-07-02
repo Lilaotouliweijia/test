@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entity">
+    <class name="Meeting" table="meeting" >
+        <id name="meetingId" type="integer">
+            <column name="meetingId" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="meetingTime" type="java.sql.Date" length="20">
+        	<column name="meetingTime"></column>
+        </property>
+         <property name="meetingAdress" type="string" length="20">
+        	<column name="meetingAdress"></column>
+        </property>
+         <many-to-one name="meetingAdminId" column="meetingAdminId" class="Admin"
+			lazy="false" cascade="save-update"></many-to-one>
+
+    </class>
+</hibernate-mapping>

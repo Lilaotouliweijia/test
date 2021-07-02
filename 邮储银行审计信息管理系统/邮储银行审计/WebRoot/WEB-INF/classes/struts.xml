@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- struts配置文件的根 -->
+<struts>
+	<!-- struts2中默认设置文件大小为最大2M 超过2m会出错 设置默认值可以对整个应用有效 单位是字节 1024字节=1kb 1024kb=1m -->
+	<constant name="struts.multipart.maxSize" value="60000000"></constant>
+	<!-- 设置struts的一些常量 该设置可以修改掉默认设置 -->
+	<!-- 开启 支持动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	<!-- 自定义后缀匹配 在value中可以设置多个不同后缀匹配，注意用,隔开 -->
+	<constant name="strutes.action.extension" value="action,do,abc,"></constant>
+	<!-- 拆分配置文件 按模块拆分 -->
+	
+	<include file="config/main.xml"></include>
+	<include file="config/Info.xml"></include>
+	<include file="config/FangAn.xml"></include>
+	<include file="config/Project.xml"></include>
+	<include file="config/admin.xml"></include>
+	<include file="config/Xcsj.xml"></include>
+	<include file="config/Report.xml"></include>
+	<include file="config/Meeting.xml"></include>
+	<!-- 父包设置 所有的子模块都继承此包的设置 -->
+	<package name="main" extends="json-default">
+	</package>
+</struts>

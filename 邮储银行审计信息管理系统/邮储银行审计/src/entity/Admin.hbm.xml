@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entity">
+    <class name="Admin" table="admin" >
+        <id name="adminId" type="integer">
+            <column name="adminId" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="adminName" type="string" length="20">
+        	<column name="adminName"></column>
+        </property>
+         <property name="adminPass" type="string" length="20">
+        	<column name="adminPass"></column>
+        </property>
+         <property name="adminType" type="string" length="20">
+        	<column name="adminType"></column>
+        </property>
+        <property name="adminPic" type="string" length="200">
+        	<column name="adminPic"></column>
+        </property>
+
+    </class>
+</hibernate-mapping>
